@@ -1,0 +1,81 @@
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
+class Solution {
+public:
+    vector<TreeNode*>v;
+    vector<TreeNode*>v2;
+    vector<TreeNode*>v3;
+    vector<TreeNode*>v4;
+    void Preorder(TreeNode* root)
+    {
+        if(root==NULL) return ;
+        v.push_back(root);
+        Preorder(root->left);
+        Preorder(root->right);
+    }
+    void Preorder2(TreeNode* root2)
+    {
+        if(root2==NULL) return ;
+        Preorder(root2->left);
+        Preorder(root2->right);
+        v2.push_back(root2);
+    }
+    void Preorder3(TreeNode* root3)
+    {
+        if(root3==NULL) return ;
+        v3.push_back(root3);
+        Preorder(root3->left);
+        Preorder(root3->right);
+    }
+    void Preorder4(TreeNode* root4)
+    {
+        if(root4==NULL) return ;
+        Preorder(root4->left);
+        Preorder(root4->right);
+        v4.push_back(root4);
+    }
+    bool isSameTree(TreeNode* p, TreeNode* q) {
+            Preorder(p);
+            Preorder2(p);
+            Preorder3(q);
+            Preorder4(q);
+            bool flag=true;
+            int x=v.size();
+            int x2=v2.size();
+            int x3=v3.size();
+            int x4=v4.size();
+            if(x==x3)
+            {
+               for(int i=0;i<x;i++)
+               {
+                   if(v[i]->val!=v3[i]->val)
+                   {
+                       flag=false;
+                   }
+               }
+            }
+            bool flag2=true;
+            if(x2==x4)
+            {
+               for(int i=0;i<x2;i++)
+               {
+                   if(v2[i]->val!=v4[i]->val)
+                   {
+                       flag2=false;
+                   }
+               }
+            }
+            if(x2!=x4 && x!=x3) return false;
+            else if(flag==false && flag2==false) return false;
+            else return true;
+    }
+};

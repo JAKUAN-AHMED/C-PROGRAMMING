@@ -1,0 +1,15 @@
+void midisplay(Node* head) {
+    Node* slow=head;
+    Node* fast=head;
+    
+    while (fast!=NULL&& fast->Next!=NULL) {
+        slow=slow->Next; 
+        fast=fast->Next->Next;
+    }
+    
+    if((size(head))%2==0)
+    {
+        cout<<slow->val<<" "<<slow->Next->val<<endl;
+    }
+    else cout<<slow->val<<endl;
+}

@@ -1,0 +1,12 @@
+first e duita stack nen ekta thakbe ans stack arekta input neyar stack
+
+jodi input neyar stack ta empty thake tahole input character ta push koren jodi empty na thake  tahole dekhen stack top er color er sathe input color ta meshano jabe kina  jodi jai tahole ans stack e mixed color ta dhokay den  ar na gele kichu dhokano lagbe na 
+erpore stack theke pop koren
+
+erpore ans stack er top er value nen ar top er porer tar value nen pop kore  ei duita jodi match hoi duitay pop koren ar match na hole ja tai
+
+erpore ans stack ta reverse koren
+
+tarpor print koren
+
+ar last e check koren- jodi apnar input odd number er hoi tahole input er last character er ta shobar last e print kore den

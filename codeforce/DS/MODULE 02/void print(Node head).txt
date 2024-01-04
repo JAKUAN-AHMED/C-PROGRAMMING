@@ -1,0 +1,18 @@
+void print(Node *head)
+{
+    Node *tmp = head;
+
+    for (int i = 1; i <= size(head); i++)
+    {
+        
+        if (i == size(head) / 2 and size(head) % 2 == 0)
+        {
+            cout << tmp->val << " " << tmp->next->val;
+            break;
+        }
+        else if(i == size(head)/2){
+            cout << tmp->next->val << " " << endl;
+        }
+        tmp = tmp->next;
+    }
+}

@@ -1,0 +1,68 @@
+#include <iostream>
+#include <string>
+#include <ctime>
+#include <map>
+#include <vector>
+#include <pocketsphinx.h>
+
+using namespace std;
+
+// Function to get the current date in the desired format
+string getCurrentDate() {
+    time_t now = time(0);
+    tm* currentDate = localtime(&now);
+    char buffer[80];
+    strftime(buffer, sizeof(buffer), "%d/%m/%Y", currentDate);
+    return string(buffer);
+}
+
+// Function to perform voice recognition using PocketSphinx
+string recognizeSpeech() {
+    // ... PocketSphinx voice recognition code ...
+}
+
+int main() {
+    map<string, vector<string>> attendanceMap; // Map to store attendance status and absent dates for each student
+    string currentDate = getCurrentDate();
+    string rollNumber, presence;
+
+    cout << "Teacher Attendance - " << currentDate << endl;
+    cout << "Enter 'q' to quit." << endl;
+
+    while (true) {
+        cout << "Enter student's roll number: ";
+        cin >> rollNumber;
+
+        if (rollNumber == "q")
+            break;
+
+        cout << "Is the student present? (yes/no): ";
+        presence = recognizeSpeech();
+
+        // Convert the presence status to lowercase for easier comparison
+        transform(presence.begin(), presence.end(), presence.begin(), ::tolower);
+
+        if (attendanceMap.find(rollNumber) == attendanceMap.end()) {
+            attendanceMap[rollNumber] = { currentDate };
+        } else {
+            attendanceMap[rollNumber].push_back(currentDate);
+        }
+    }
+
+    // Print the attendance count and absent dates for each student
+    for (const auto& student : attendanceMap) {
+        int presentCount = student.second.size();
+        int totalDates = student.second.size() + 1; // Include the current date
+        int absentCount = totalDates - presentCount;
+
+        cout << "Roll Number: " << student.first << endl;
+        cout << "Attendance Count: " << presentCount << "/" << totalDates << endl;
+        cout << "Absent Dates: ";
+        for (const auto& date : student.second) {
+            cout << date << " ";
+        }
+        cout << endl;
+    }
+
+    return 0;
+}

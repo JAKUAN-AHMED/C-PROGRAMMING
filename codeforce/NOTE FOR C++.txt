@@ -1,0 +1,84 @@
+C++-->starts>>>
+MODULE===><1>
+keynote:min(),max()<algorithm>||swap()||float(fixed,setprecision(.afterdigit)||ternary==<(condition)? exression1:expression2>
+
+MODULE===<2>
+
+2types<>memory==<>(1)static memory==>it deletes automatically
+		    <>(1)heap/dynamic memory==>need command(delete function use)
+
+MODULE 3==<>
+making dinamic memory-->
+need==>(1)=>a pointer Exp=int* n
+	 (2)==>new int[size of array]
+making class==>
+need==>(1)class class_name
+       (2)parenthesis with semi-colon-->>{};
+keynote:constructor<>object<>dynamic object<>calling dynamic object using by(*class name)dot/-><>sort(start,stop,asc/desc)<ascending(descending--!greteer<int>())
+
+==>pointer
+int num=15=int *num_ptr;//for printing value
+
+int num_ptr=&num;//for printing address
+
+==>MODULE-04
+	<midturm done>
+
+==>MODULE 5-->>STRING
+String built-in functions:
+
+Capacity
+s.size() -> returns the size of the string.
+s.max_size() -> returns the maximum size that string can hold.
+s.capacity() -> returns current available capacity of the string.
+s.clear() -> clear the string.
+s.empty() -> return true/false if the string is empty.
+s.resize() -> change the size of the string.
+Element access
+S[i] -> access the ith index of the string.
+s.at(i) -> access the ith index of the string.
+s.back() -> access the last element of the string.
+s.front() -> access the first element of the string.
+Modifiers
+s+= -> append another string.
+s.append() -> append another string.
+s.push_back() -> add character to the last of the string.
+s.pop_back() -> remove the last character of the string.
+s= -> assign string.
+s.assign() -> assign string.
+s.erase() -> erase characters from the string.
+s.replace() -> replace a portion of the string.
+s.insert() -> insert a portion to a specific position.
+Iterators
+s.begin() -> pointer to the first element.
+s.end() -> pointer to the next element after the last element of the string.
+===>with space input getline(cin,string name);
+    if previous input was int then use getchar();/cin.ignore();
+    for pass words use strstream ss(string name);
+
+==>MODULE-06
+	<sort loop/range based for loop>
+	<syntax>
+	->for(char name:string name)
+	  {
+		cout<<c<<endl;
+	  }
+	<using 'this' keyword>
+	->use this keyword to access object elements and  naming of constructor same as class member data
+	->this->member data=constructor variable; 
+
+==>MODULE -7
+	<array of object>
+	->cant use constructor if we use array of object
+	->class name array name[size];use loop till size of array
+	<class of object sorting using sort>
+
+	->sort(array.array+size,function  bool_type)
+
+	<selection sort>
+	->outer loop 1  to n-1,inner loop i+1 to n;->swap(array[i]
+	,arra[j]	
+	->acces of array object elements[array_name.memberdata_name]
+
+
+	

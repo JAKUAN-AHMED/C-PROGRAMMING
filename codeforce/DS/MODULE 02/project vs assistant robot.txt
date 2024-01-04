@@ -1,0 +1,91 @@
+//for opening word
+import speech_recognition as sr
+import subprocess
+import os
+
+def listen_command():
+    r = sr.Recognizer()
+    with sr.Microphone() as source:
+        print("Listening for commands...")
+        audio = r.listen(source)
+    try:
+        recognized_text = r.recognize_google(audio)
+        print("Recognized command:", recognized_text)
+        return recognized_text.lower()
+    except sr.UnknownValueError:
+        print("Sorry, I couldn't understand the command.")
+        return ""
+    except sr.RequestError as e:
+        print("Sorry, an error occurred while processing the command:", str(e))
+        return ""
+
+def open_microsoft_word():
+    try:
+        word_path = r"C:\Program Files\Microsoft Office\root\Office16\WINWORD.EXE"
+        subprocess.Popen(word_path)
+        print("Microsoft Word is now open.")
+    except OSError:
+        print("Error: Failed to open Microsoft Word.")
+
+# Main program loop
+while True:
+    command = listen_command()
+    if "open ms word" in command:
+        open_microsoft_word()
+    elif command == "quit":
+        print("Exiting the program...")
+        break
+
+//for opening youtube
+import speech_recognition as sr
+import pyttsx3
+import webbrowser
+import pywhatkit
+
+listener = sr.Recognizer()
+mariya = pyttsx3.init()
+voices = mariya.getProperty('voices')
+mariya.setProperty('voice', voices[1].id)
+
+
+def talk(text):
+    mariya.say(text)
+    mariya.runAndWait()
+
+
+def take_command():
+    try:
+        with sr.Microphone() as source:
+            print('Listening...')
+            voice = listener.listen(source)
+            command = listener.recognize_google(voice)
+            command = command.lower()
+            if 'mariya' in command:
+                command = command.replace('mariya', '')
+            return command
+    except sr.UnknownValueError:
+        print("Speech recognition could not understand audio")
+    except sr.RequestError as e:
+        print("Could not request results from Google Speech Recognition service; {0}".format(e))
+    except Exception as e:
+        print("An error occurred during speech recognition: {0}".format(e))
+    return ""
+
+
+def run_mariya():
+    command = take_command()
+    if 'go to youtube' in command:
+        talk('Opening YouTube')
+        webbrowser.open('https://www.youtube.com')
+    elif 'search' in command:
+        search_query = command.replace('search', '')
+        talk('Searching for ' + search_query + ' on YouTube')
+        pywhatkit.playonyt(search_query)
+    else:
+        talk("I am searching, please wait.")
+        pywhatkit.search(command)
+
+
+while True:
+    run_mariya()
+
